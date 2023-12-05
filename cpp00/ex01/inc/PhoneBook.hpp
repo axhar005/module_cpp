@@ -12,6 +12,7 @@ class PhoneBook
 	PhoneBook();
 	~PhoneBook();
 	void PhoneBook::add(Contact con);
+	void PhoneBook::print();
 
   private:
 	Contact _contact[8];

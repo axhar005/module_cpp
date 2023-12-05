@@ -1,5 +1,6 @@
 #include <cctype>
 #include <iostream>
+#include "PhoneBook.hpp"
 
 const char* RED = "\033[31m";
 const char* GREEN = "\033[32m";
@@ -36,8 +37,19 @@ std::string prompt()
 	return (str);
 }
 
+void cmd_add(PhoneBook &book)
+{
+
+}
+
+void cmd_search(void)
+{
+
+}
+
 int	main(void)
 {
+	PhoneBook book;
 	std::string cmd;
 
 	std::cout << YELLOW << "~Welcome to my PhoneBook~" << RESET << std::endl;
