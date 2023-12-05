@@ -1,17 +1,20 @@
 #ifndef PHONEBOOK
-#define PHONEBOOK
+# define PHONEBOOK
 
-#include <iostream>
-#include <cctype>
-#include "Contact.hpp"
+# include "Contact.hpp"
+# include <cctype>
+# include <iostream>
 
 class PhoneBook
 {
-	public :
+  public:
 	PhoneBook();
-	
-	private :
-	Contact contacts[8];
+	~PhoneBook();
+	void PhoneBook::add(Contact con);
+
+  private:
+	Contact _contact[8];
+	int 	_index;
 };
 
 #endif
