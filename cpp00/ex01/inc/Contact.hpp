@@ -9,8 +9,8 @@ class Contact
 	public :
 	//function
 	Contact();
-	~Contact();
 	Contact(std::string fname, std::string lname, std::string nickname, std::string number, std::string secret);
+	~Contact();
 	const std::string get_fname(bool flag) const;
 	const std::string get_lname(bool flag) const;
 	const std::string get_nickname(bool flag) const;

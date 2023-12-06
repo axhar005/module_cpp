@@ -11,9 +11,10 @@ class PhoneBook
   public:
 	PhoneBook();
 	~PhoneBook();
-	void PhoneBook::add(Contact con);
-	void PhoneBook::print();
-
+	void add(Contact &con);
+	void draw_search();
+	void draw_contact(int index);
+	Contact get_contact(int index);
   private:
 	Contact _contact[8];
 	int 	_index;

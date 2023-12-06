@@ -19,7 +19,6 @@ const std::string Contact::get_fname(bool flag) const{
 		return (_fname.substr(0, 9) + ".");
 	return (_fname);
 }
-
 const std::string Contact::get_lname(bool flag) const{
 	if (flag && _lname.length() > 9)
 		return (_lname.substr(0, 9) + ".");

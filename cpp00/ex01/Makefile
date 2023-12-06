@@ -3,7 +3,7 @@ NAME = ex01
 
 #--- COMMAND VARIABLES ---#
 CC = c++
-CFLAGS = -std=c++98 -Wall -Wextra -Werror
+CFLAGS = -std=c++98 -Wall -Wextra -Werror #-fsanitize=address
 RM = rm -f
 MK = mkdir -p
 

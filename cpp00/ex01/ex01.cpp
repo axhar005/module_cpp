@@ -1,14 +1,9 @@
+#include <string>
 #include <cctype>
 #include <iostream>
 #include "PhoneBook.hpp"
+#include "colors.hpp"
 
-const char* RED = "\033[31m";
-const char* GREEN = "\033[32m";
-const char* YELLOW = "\033[33m";
-const char* BLUE = "\033[34m";
-const char* MAGENTA = "\033[35m";
-const char* CYAN = "\033[36m";
-const char* RESET = "\033[0m";
 
 void	toupper(std::string &str)
 {
@@ -17,20 +12,30 @@ void	toupper(std::string &str)
     }
 }
 
-void	print_info(void)
+bool str_isdigit(const std::string &str)
 {
-	std::cout << YELLOW << "--------------------------------" << RESET << std::endl;
-	std::cout << YELLOW << "|" << RESET << " HELP   -show commands        " << YELLOW << "|" << RESET << std::endl;
-	std::cout << YELLOW << "|" << RESET << " ADD    -add a contact        " << YELLOW << "|" << RESET << std::endl;
-	std::cout << YELLOW << "|" << RESET << " SEARCH -search for a contact " << YELLOW << "|" << RESET << std::endl;
-	std::cout << YELLOW << "|" << RESET << " EXIT   -quit the phonebook   " << YELLOW << "|" << RESET << std::endl;
-	std::cout << YELLOW << "--------------------------------" << RESET << std::endl;
+	for (size_t i = 0; i < str.length(); i++) {
+		if (!isdigit(str[i])) {
+			return (false);
+		}
+	}
+	return (true);
 }
 
-std::string prompt()
+void	print_info(void)
+{
+	std::cout << YELLOW << "---------------------------------------------" << RESET << std::endl;
+	std::cout << YELLOW << "|" << RESET << " HELP   " << YELLOW << "| " << RESET "show commands                    " << YELLOW << "|" << RESET << std::endl;
+	std::cout << YELLOW << "|" << RESET << " ADD    " << YELLOW << "| " << RESET "add a contact                    " << YELLOW << "|" << RESET << std::endl;
+	std::cout << YELLOW << "|" << RESET << " SEARCH " << YELLOW << "| " << RESET "search for a contact             " << YELLOW << "|" << RESET << std::endl;
+	std::cout << YELLOW << "|" << RESET << " EXIT   " << YELLOW << "| " << RESET "quit the phonebook               " << YELLOW << "|" << RESET << std::endl;
+	std::cout << YELLOW << "---------------------------------------------" << RESET << std::endl;
+}
+
+std::string prompt(std::string pmt)
 {
 	std::string str;
-	std::cout << "PhoneBook > ";
+	std::cout << pmt;
 	getline(std::cin, str);
 	if (std::cin.eof())
 		return ("");
@@ -39,34 +44,74 @@ std::string prompt()
 
 void cmd_add(PhoneBook &book)
 {
-
+	std::string fname, lname, nickname, number, secret;
+	fname = prompt("FIRST NAME : ");
+	if (fname.length() == 0){
+		std::cout << RED << "wrong entries" << RESET << std::endl;
+		return ;
+	}
+	lname = prompt("LAST NAME : ");
+	if (lname.length() == 0){
+		std::cout << RED << "wrong entries" << RESET << std::endl;
+		return ;
+	}
+	nickname = prompt("NICKNAME : ");
+	if (nickname.length() == 0){
+		std::cout << RED << "wrong entries" << RESET << std::endl;
+		return ;
+	}
+	number = prompt("PHONE NUMBER : ");
+	if (number.length() == 0){
+		std::cout << RED << "wrong entries" << RESET << std::endl;
+		return ;
+	}
+	secret = prompt("YOUR DARKEST SECRET : ");
+	if (secret.length() == 0){
+		std::cout << RED << "wrong entries" << RESET << std::endl;
+		return ;
+	}
+	Contact con(fname, lname, nickname, number, secret);
+	book.add(con);
 }
 
-void cmd_search(void)
+void cmd_search(PhoneBook &book)
 {
-
+	int tmp;
+	book.draw_search();
+	if (book.get_contact(0).get_fname(false).length() <= 0)
+		return ;
+	std::string pmt = prompt("CONTACT INDEX : ");
+	if (!str_isdigit(pmt))
+	{
+		std::cout << RED << "invalid index" << RESET << std::endl;
+		return ;
+	}
+	tmp = std::atoi(pmt.c_str());
+	if (tmp >= 0 && tmp < 8 && book.get_contact(tmp).get_fname(false).length() > 0)
+		book.draw_contact(tmp);
+	else 
+		std::cout << "invalid index" << std::endl;
 }
 
 int	main(void)
 {
 	PhoneBook book;
 	std::string cmd;
-
 	std::cout << YELLOW << "~Welcome to my PhoneBook~" << RESET << std::endl;
 	print_info();
 	while(1)
 	{
-		cmd = prompt();
+		cmd = prompt("PhoneBook > ");
 		toupper(cmd);
 		if (cmd == "HELP")
 			print_info();
 		else if (cmd == "ADD")
-			std::cout << "add" << std::endl;
+			cmd_add(book);
 		else if (cmd == "SEARCH")
-			std::cout << "search" << std::endl;
+			cmd_search(book);
 		else if (cmd == "EXIT")
 			return (0);
 		else
-			std::cout << "\033[1;31mCommande not found !\033[0m" << std::endl;
+			std::cout << RED << "Commande not found !" << RESET << std::endl;
 	}
 }
