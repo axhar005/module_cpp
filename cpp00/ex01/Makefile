@@ -1,5 +1,5 @@
 #--- LIBRARY NAME ---#
-NAME = ex01
+NAME = phonebook
 
 #--- COMMAND VARIABLES ---#
 CC = c++
@@ -13,7 +13,7 @@ RED		=	\033[1;31m
 RESET 	= 	\033[0m
 
 #--- OBJECT ---#
-SRC = ex01.cpp Contact.cpp PhoneBook.cpp
+SRC = main.cpp Contact.cpp PhoneBook.cpp
 INCDIR = inc
 OBJDIR = bin
 OBJ = $(addprefix $(OBJDIR)/, $(SRC:.cpp=.o))
