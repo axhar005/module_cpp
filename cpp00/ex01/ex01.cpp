@@ -5,7 +5,7 @@
 #include "colors.hpp"
 
 
-void	toupper(std::string &str)
+void	str_toupper(std::string &str)
 {
 	for (std::string::size_type i = 0; i < str.length(); ++i) {
         str[i] = std::toupper(str[i]);
@@ -37,8 +37,8 @@ std::string prompt(std::string pmt)
 	std::string str;
 	std::cout << pmt;
 	getline(std::cin, str);
-	if (std::cin.eof())
-		return ("");
+	if (std::cin.fail())
+		exit(2);
 	return (str);
 }
 
@@ -77,8 +77,8 @@ void cmd_add(PhoneBook &book)
 void cmd_search(PhoneBook &book)
 {
 	int tmp;
-	book.draw_search();
-	if (book.get_contact(0).get_fname(false).length() <= 0)
+	book.drawSearch();
+	if (book.getContact(0).getFname(false).length() <= 0)
 		return ;
 	std::string pmt = prompt("CONTACT INDEX : ");
 	if (!str_isdigit(pmt))
@@ -87,8 +87,8 @@ void cmd_search(PhoneBook &book)
 		return ;
 	}
 	tmp = std::atoi(pmt.c_str());
-	if (tmp >= 0 && tmp < 8 && book.get_contact(tmp).get_fname(false).length() > 0)
-		book.draw_contact(tmp);
+	if (tmp >= 0 && tmp < 8 && book.getContact(tmp).getFname(false).length() > 0)
+		book.drawContact(tmp);
 	else 
 		std::cout << "invalid index" << std::endl;
 }
@@ -102,7 +102,7 @@ int	main(void)
 	while(1)
 	{
 		cmd = prompt("PhoneBook > ");
-		toupper(cmd);
+		str_toupper(cmd);
 		if (cmd == "HELP")
 			print_info();
 		else if (cmd == "ADD")
