@@ -10,7 +10,12 @@ MK = mkdir -p
 #--- COLORS ---#
 GREEN	=	\033[1;32m
 RED		=	\033[1;31m
+CYAN	=	\033[1;36m
 RESET 	= 	\033[0m
+
+#--- STRING ---#
+CLEANING := "$(GREEN)[+] Cleaning Completed$(RESET)"
+SUCCESS := "$(GREEN)[+] $(NAME) Successfully Compiled!$(RESET)"
 
 #--- OBJECT ---#
 SRC = main.cpp Contact.cpp PhoneBook.cpp
@@ -22,6 +27,7 @@ OBJ = $(addprefix $(OBJDIR)/, $(SRC:.cpp=.o))
 $(OBJDIR)/%.o:	%.cpp
 	@mkdir -p $(@D)
 	@$(CC) $(CFLAGS) -I$(INCDIR) -I. -c $< -o $@
+	@echo "$(CYAN)[-] Compiling: $@$(RESET)"
 
 all: $(NAME)
 
@@ -30,15 +36,15 @@ $(OBJDIR):
 	
 ${NAME}:	$(OBJDIR) $(OBJ)
 	@$(CC) $(CFLAGS) -o $(NAME) $(OBJ)
-	@echo "$(NAME)$(GREEN) successfully compiled 📁.$(RESET)"
+	@echo $(SUCCESS)
 
 clean:
 	@$(RM) $(OBJ)
 	@$(RM)r $(OBJDIR)
+	@echo $(CLEANING)
 
-fclean:	clean	
+fclean:	clean
 	@$(RM) $(NAME)
-	@echo "$(NAME)$(GREEN) object files and executable successfully removed 🗑.$(RESET)"
 
 re:	fclean all
 
