@@ -1,5 +1,6 @@
 #include "inc/HumanB.hpp"
 #include "inc/Weapon.hpp"
+#include "inc/colors.hpp"
 
 // Default constructor
 HumanB::HumanB() {
@@ -25,7 +26,7 @@ void HumanB::setWeapon(Weapon &weapon){
 
 void HumanB::attack() const{
 	if (this->_weapon)
-		std::cout << _name << "attacks with their" << _weapon->getType() << std::endl;
+		std::cout << CYAN << _name << "attacks with their" << _weapon->getType() << std::endl;
 	else if (this->_weapon)
-		std::cout << _name << "attacks with their" << "empty" << std::endl;
+		std::cout << CYAN << _name << "attacks with their" << "empty" << RESET << std::endl;
 }
