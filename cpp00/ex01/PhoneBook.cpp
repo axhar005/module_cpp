@@ -1,6 +1,6 @@
-#include "PhoneBook.hpp"
-#include "Contact.hpp"
-#include "colors.hpp"
+#include "inc/PhoneBook.hpp"
+#include "inc/Contact.hpp"
+#include "inc/colors.hpp"
 
 
 PhoneBook::PhoneBook() : _index(0){
@@ -9,7 +9,7 @@ PhoneBook::PhoneBook() : _index(0){
 PhoneBook::~PhoneBook(){
 }
 
-Contact PhoneBook::getContact(int index) {
+Contact PhoneBook::getContact(int index){
 	Contact con;
 	if (index >= 0 && index < 8) {
 		return _contact[index];

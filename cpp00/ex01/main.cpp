@@ -1,8 +1,8 @@
 #include <string>
 #include <cctype>
 #include <iostream>
-#include "PhoneBook.hpp"
-#include "colors.hpp"
+#include "inc/PhoneBook.hpp"
+#include "inc/colors.hpp"
 
 
 void	str_toupper(std::string &str)

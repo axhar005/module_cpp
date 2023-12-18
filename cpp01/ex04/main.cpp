@@ -2,7 +2,7 @@
 #include <iostream>
 #include "inc/colors.hpp"
 
-std::string readFile(std::string filename, std::string &text){
+void readFile(std::string filename, std::string &text){
 	std::ifstream infile(filename);
 	std::string line;
 	if (infile.is_open()){
@@ -10,9 +10,8 @@ std::string readFile(std::string filename, std::string &text){
 			text += line + "\n";
 		text = text.substr(0, text.length() - 1);
 	}else
-		std::cout << RED << "No permission or file not found" << RESET << std::endl;
+		std::cerr << RED << "No permission or file not found" << RESET << std::endl;
 	infile.close();
-	return (text);
 }
 
 void writeFile(std::string filename, std::string &text){
