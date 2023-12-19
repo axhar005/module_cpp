@@ -1,5 +1,5 @@
-#include "Zombie.hpp"
-#include "colors.hpp"
+#include "inc/Zombie.hpp"
+#include "inc/colors.hpp"
 
 Zombie::Zombie(){
 }
