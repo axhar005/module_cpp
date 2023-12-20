@@ -11,10 +11,10 @@ public:
 	Fixed(float const raw);
 	Fixed(const Fixed &other);	// Copy constructor
 	Fixed &operator=(const Fixed &rhs);	// Copy assignment overload
-	Fixed operator-(const Fixed &rhs);
-	Fixed operator+(const Fixed &rhs);
-	Fixed operator*(const Fixed &rhs);
-	Fixed operator/(const Fixed &rhs);
+	Fixed operator-(const Fixed &rhs) const;
+	Fixed operator+(const Fixed &rhs) const;
+	Fixed operator*(const Fixed &rhs) const;
+	Fixed operator/(const Fixed &rhs) const;
 	Fixed &operator--();
 	Fixed operator--(int);
 	Fixed &operator++();

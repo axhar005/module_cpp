@@ -24,28 +24,28 @@ Fixed &Fixed::operator=(const Fixed &rhs){
 }
 
 // Copy assignment overload
-Fixed Fixed::operator-(const Fixed &rhs){
+Fixed Fixed::operator-(const Fixed &rhs) const{
 	Fixed result;
 	result.setRawBits(this->_value - rhs.getRawBits());
 	return result;
 }
 
 // Copy assignment overload
-Fixed Fixed::operator+(const Fixed &rhs){
+Fixed Fixed::operator+(const Fixed &rhs) const{
 	Fixed result;
 	result.setRawBits(this->_value + rhs.getRawBits());
 	return result;
 }
 
 // Copy assignment overload
-Fixed Fixed::operator*(const Fixed &rhs){
+Fixed Fixed::operator*(const Fixed &rhs) const{
 	Fixed result;
 	result.setRawBits(this->_value * rhs.getRawBits() >> this->_base);
 	return result;
 }
 
 // Copy assignment overload
-Fixed Fixed::operator/(const Fixed &rhs){
+Fixed Fixed::operator/(const Fixed &rhs) const{
 	Fixed result;
 	result.setRawBits(this->_value * (1 << this->_base) / rhs.getRawBits());
 	return result;
