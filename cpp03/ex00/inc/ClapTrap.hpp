@@ -10,12 +10,15 @@ public:
 	ClapTrap(const ClapTrap &other); // Copy constructor
 	ClapTrap &operator=(const ClapTrap &rhs);	// Copy assignment overload
 	~ClapTrap();	// Default destructor
+	void attack(const std::string& target);
+	void takeDamage(unsigned int amount);
+	void beRepaired(unsigned int amount);
 
 private:
 	std::string _name;
-	int hp;
-	int ep;
-	int ad;
+	int _hp;
+	int _ep;
+	int _ad;
 
 
 };
