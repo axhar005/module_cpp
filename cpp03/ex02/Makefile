@@ -1,5 +1,5 @@
 #--- LIBRARY NAME ---#
-NAME = scavtrap
+NAME = fragtrap
 
 #--- COMMAND VARIABLES ---#
 CC = c++
@@ -18,7 +18,7 @@ CLEANING := "$(GREEN)[+] Cleaning Completed$(RESET)"
 SUCCESS := "$(GREEN)[+] $(NAME) Successfully Compiled!$(RESET)"
 
 #--- OBJECT ---#
-SRC = main.cpp ClapTrap.cpp ScavTrap.cpp
+SRC = main.cpp ClapTrap.cpp ScavTrap.cpp FragTrap.cpp
 INCDIR = inc
 OBJDIR = bin
 OBJ = $(addprefix $(OBJDIR)/, $(SRC:.cpp=.o))

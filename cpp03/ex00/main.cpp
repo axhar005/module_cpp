@@ -6,4 +6,12 @@ int main(void){
 	ClapTrap kevin("kevin");
 
 	bob.attack("kevin");
+	bob.beRepaired(10);
+	bob.takeDamage(30);
+	bob.attack("kevin");
+	bob.stats();
+
+	kevin.stats();
+	kevin = bob;
+	kevin.stats();
 }

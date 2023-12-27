@@ -11,21 +11,13 @@ public:
 	ClapTrap(const ClapTrap &other); // Copy constructor
 	ClapTrap &operator=(const ClapTrap &rhs);	// Copy assignment overload
 	~ClapTrap();	// Default destructor
-	virtual void attack(const std::string& target);
+	void attack(const std::string& target);
 	void takeDamage(unsigned int amount);
 	void beRepaired(unsigned int amount);
 	void low(std::string func);
 	void stats(void);
-	std::string getName(void) const;
-	int getHp(void) const;
-	int getEp(void) const;
-	int getAd(void) const;
-	void setName(std::string name);
-	void setHp(int amount);
-	void setEp(int amount);
-	void setAd(int amount);
 
-private:
+protected:
 	std::string _name;
 	int _hp;
 	int _ep;

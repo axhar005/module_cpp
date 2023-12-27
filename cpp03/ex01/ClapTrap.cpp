@@ -47,7 +47,7 @@ void ClapTrap::low(std::string func){
 }
 
 void ClapTrap::stats(void){
-	std::cout << GREEN "ClapTrap " << _name << " Stats: HP: " << _hp << " EP: " << _ep << " AD: " << _ad << RESET << std::endl;
+	std::cout << GREEN "ClapTrap " << _name << " Stats: HP: " << _hp << " EP: " << _ep << RESET << std::endl;
 }
 
 void ClapTrap::attack(const std::string& target){
@@ -72,7 +72,7 @@ void ClapTrap::beRepaired(unsigned int amount){
 	if (_ep > 0){
 		_hp += amount;
 		_ep--;
-		std::cout << YELLOW "ClapTrap " << _name << " repair " << amount << " hp!" << RESET << std::endl;
+		std::cout << YELLOW "ClapTrap " << _name << " repair " << amount << " of hp!" << RESET << std::endl;
 	}
 	else
 		low("beRepaired");

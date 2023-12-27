@@ -1,11 +1,9 @@
-#include "inc/ClapTrap.hpp"
-#include "inc/ScavTrap.hpp"
+#include "inc/FragTrap.hpp"
 #include <iostream>
 
 int main(void){
-	ClapTrap gerard("Gerard");
-	ScavTrap roger("Roger");
-	ScavTrap gill("Gill");
+	FragTrap roger("Roger");
+	FragTrap gill("Gill");
 
 	// hp test
 	roger.stats();
@@ -13,19 +11,19 @@ int main(void){
 	for (int i = 0; i < 5; i++)
 		roger.takeDamage(10);
 	roger.beRepaired(50);
-	roger.guardGate();
+	roger.highFivesGuys();
 	roger.takeDamage(100);
 	roger.attack("Gille");
-	roger.guardGate();
+	roger.highFivesGuys();
 	roger.stats();
 
 	
 	// ep test
 	gill.stats();
-	gill.guardGate();
-	for (int i = 0; i < 50; i++)
+	gill.highFivesGuys();
+	for (int i = 0; i < 10; i++)
 		gill.attack("Roger");
-	gill.guardGate();
+	gill.highFivesGuys();
 	gill.beRepaired(10);
 	gill.attack("Roger");
 	gill.takeDamage(10);

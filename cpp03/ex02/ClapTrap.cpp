@@ -3,7 +3,7 @@
 #include <iostream>
 
 // Default constructor
-ClapTrap::ClapTrap() : _name("None"), _hp(10), _ep(10), _ad(0){
+ClapTrap::ClapTrap() : _name("Default"), _hp(10), _ep(10), _ad(0){
 	std::cout << MAGENTA << "ClapTrap default constructor as been called" << RESET << std::endl;
 	return;
 }
@@ -47,7 +47,7 @@ void ClapTrap::low(std::string func){
 }
 
 void ClapTrap::stats(void){
-	std::cout << GREEN "ClapTrap " << _name << " Stats: HP: " << _hp << " EP: " << _ep << RESET << std::endl;
+	std::cout << GREEN "ClapTrap " << _name << " Stats: HP: " << _hp << " EP: " << _ep << " AD: " << _ad << RESET << std::endl;
 }
 
 void ClapTrap::attack(const std::string& target){
@@ -72,40 +72,8 @@ void ClapTrap::beRepaired(unsigned int amount){
 	if (_ep > 0){
 		_hp += amount;
 		_ep--;
-		std::cout << YELLOW "ClapTrap " << _name << " repair " << amount << " of hp!" << RESET << std::endl;
+		std::cout << YELLOW "ClapTrap " << _name << " repair " << amount << " hp!" << RESET << std::endl;
 	}
 	else
 		low("beRepaired");
-}
-
-std::string ClapTrap::getName(void) const{
-	return (_name);
-}
-
-int ClapTrap::getHp(void) const{
-	return (_hp);
-}
-
-int ClapTrap::getEp(void) const{
-	return (_ep);
-}
-
-int ClapTrap::getAd(void) const{
-	return (_ad);
-}
-
-void ClapTrap::setName(std::string name){
-	_name = name;
-}
-
-void ClapTrap::setHp(int amount){
-	_hp = amount;
-}
-
-void ClapTrap::setEp(int amount){
-	_ep = amount;
-}
-
-void ClapTrap::setAd(int amount){
-	_ad = amount;
 }

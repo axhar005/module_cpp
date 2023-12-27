@@ -3,18 +3,18 @@
 
 // Default constructor
 ScavTrap::ScavTrap() : ClapTrap(){
-	setHp(100);
-	setEp(50);
-	setAd(20);
+	this->_hp = 100;
+	this->_ep = 50;
+	this->_ad = 20;
 	std::cout << MAGENTA << "ScavTrap default constructor as been called" << RESET << std::endl;
 	return;
 }
 
 // Default constructor
 ScavTrap::ScavTrap(std::string name) : ClapTrap(name){
-	setHp(100);
-	setEp(50);
-	setAd(20);
+	this->_hp = 100;
+	this->_ep = 50;
+	this->_ad = 20;
 	std::cout << MAGENTA << "ScavTrap constructor as been called" << RESET << std::endl;
 	return;
 }
@@ -28,10 +28,9 @@ ScavTrap::ScavTrap(const ScavTrap &other) {
 
 // Copy assignment overload
 ScavTrap &ScavTrap::operator=(const ScavTrap &rhs) {
-	setName(rhs.getName());
-	setHp(rhs.getHp());
-	setEp(rhs.getEp());
-	setAd(rhs.getAd());
+	this->_hp = rhs._hp;
+	this->_ep = rhs._ep;
+	this->_ad = rhs._ad;
 	std::cout << MAGENTA << "ScavTrap copy assignment overload as been called" << RESET << std::endl;
 	return *this;
 }
@@ -43,18 +42,18 @@ ScavTrap::~ScavTrap() {
 }
 
 void ScavTrap::guardGate(void){
-	if (getHp() > 0 && getEp() > 0){
-		setEp(getEp() - 1);
-		std::cout << RED << "ScavTrap enter in gate keeper mode!" << RESET << std::endl;
+	if (this->_hp > 0 && this->_ep > 0){
+		this->_ep--;
+		std::cout << RED << "ScavTrap " << this->_name << " enter in gate keeper mode!" << RESET << std::endl;
 	}
 	else
 		low("guardGate");
 }
 
 void ScavTrap::attack(const std::string& target){
-	if (getHp() > 0 && getEp() > 0){
-		setEp(getEp() - 1);
-		std::cout << YELLOW "ScavTrap " << getName() << " attacks " << target << ", causing "<< getAd() << " points of damage!" << RESET << std::endl;
+	if (this->_hp > 0 && this->_ep > 0){
+		this->_ep--;
+		std::cout << YELLOW "ScavTrap " << this->_name << " attacks " << target << ", causing "<< this->_ad << " points of damage!" << RESET << std::endl;
 	}
 	else
 		low("attack");
