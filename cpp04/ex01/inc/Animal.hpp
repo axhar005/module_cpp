@@ -1,6 +1,7 @@
 #ifndef ANIMAL_HPP_
 #define ANIMAL_HPP_
 
+#include "Brain.hpp"
 #include <iostream>
 
 // Class declaration
@@ -15,7 +16,6 @@ public:
 
 protected:
 	std::string _type;
-
 };
 
 #endif // ANIMAL_HPP_

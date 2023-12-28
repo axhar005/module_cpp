@@ -10,9 +10,11 @@ public:
 	Brain(const Brain &other); // Copy constructor
 	Brain &operator=(const Brain &rhs);	// Copy assignment overload
 	~Brain();	// Default destructor
+	void setIdea(int i, std::string str);
+	std::string getIdea(int i);
 
 private:
-	std::string 
+	std::string _idea[100];
 
 };
 

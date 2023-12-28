@@ -5,31 +5,41 @@
 // Default constructor
 Dog::Dog(){
 	_type = "Dog";
-	std::cout << MAGENTA << "Dog default constructor as been called" << RESET << std::endl;
+	std::cout << GREEN << "Dog default constructor as been called" << RESET << std::endl;
+	_brain = new Brain;
 	return;
 }
 
 // Copy constructor
 Dog::Dog(const Dog &other){
 	*this = other;
-	std::cout << MAGENTA << "Dog copy constructor as been called" << RESET << std::endl;
+	std::cout << GREEN << "Dog copy constructor as been called" << RESET << std::endl;
 	return;
 }
 
 // Copy assignment overload
 Dog &Dog::operator=(const Dog &rhs){
-	(void)rhs;
-	std::cout << MAGENTA << "Dog copy assignment overload as been called" << RESET << std::endl;
+	this->_brain = new Brain(*rhs._brain);
+	std::cout << GREEN << "Dog copy assignment overload as been called" << RESET << std::endl;
 	return *this;
 }
 
 // Default destructor
 Dog::~Dog(){
-	std::cout << MAGENTA << "Dog default deconstructor as been called" << RESET << std::endl;
+	delete _brain;
+	std::cout << GREEN << "Dog default deconstructor as been called" << RESET << std::endl;
 	return;
 }
 
 void Dog::makeSound() const{
 	std::cout << YELLOW << "Woaf !" << RESET << std::endl;
 	return;
+}
+
+void Dog::setIdea(int i, std::string idea){
+	_brain->setIdea(i, idea);
+}
+
+std::string Dog::getIdea(int i){
+	return _brain->getIdea(i);
 }
