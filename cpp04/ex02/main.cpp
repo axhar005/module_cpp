@@ -6,6 +6,7 @@
 
 int main(void){
 	Animal* animals[10];
+	// Animal a = new Animal();
 
 	for (int i = 0; i < 2; i++) {
 		animals[i] = new Dog;

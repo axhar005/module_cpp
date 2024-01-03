@@ -1,6 +1,5 @@
 #include "inc/Dog.hpp"
 #include "inc/colors.hpp"
-#include <typeinfo>
 
 // Default constructor
 Dog::Dog(){
