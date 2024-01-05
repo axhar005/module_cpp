@@ -1,7 +1,7 @@
 #ifndef IMATERIASOURCE_HPP_
 #define IMATERIASOURCE_HPP_
 
-#include "ICharacter.hpp"
+#include "AMateria.hpp"
 
 // Class declaration
 class IMateriaSource {

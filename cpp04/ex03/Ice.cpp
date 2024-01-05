@@ -4,23 +4,31 @@
 
 // Default constructor
 Ice::Ice() : AMateria("ice"){
+	if (CALL)
+		std::cout << MAGENTA << "Ice Construction as been called" << RESET << std::endl;
 	return;
 }
 
 // Copy constructor
 Ice::Ice(const Ice &other) {
+	if (CALL)
+		std::cout << MAGENTA << "Ice Copy Construction as been called" << RESET << std::endl;
 	*this = other;
 	return;
 }
 
 // Copy assignment overload
 Ice &Ice::operator=(const Ice &rhs) {
+	if (CALL)
+		std::cout << MAGENTA << "Ice Copy assignment overload as been called" << RESET << std::endl;
 	(void)rhs;
 	return *this;
 }
 
 // Default destructor
 Ice::~Ice() {
+	if (CALL)
+		std::cout << MAGENTA << "Ice Deconstruction as been called" << RESET << std::endl;
 	return;
 }
 
@@ -30,5 +38,5 @@ AMateria *Ice::clone() const{
 }
 
 void Ice::use(ICharacter& target){
-	std::cout << GREEN << "* heals " << target.getName() << "'s wounds *" << RESET << std::endl;
+	std::cout << CYAN << "* shoots an ice bolt at " << target.getName() << " *" << RESET << std::endl;
 }

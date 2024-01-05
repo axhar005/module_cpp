@@ -5,6 +5,8 @@
 #include <iostream>
 #include <string>
 
+#define CALL true
+
 // Class declaration
 class AMateria {
 	public:
