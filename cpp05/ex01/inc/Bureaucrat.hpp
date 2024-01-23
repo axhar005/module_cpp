@@ -8,11 +8,15 @@ class Bureaucrat {
 public:
 	class GradeTooHighException : public std::exception {
 		public:
-			const char *what(void) const throw();
+			const char *what(void) const throw(){
+				return ("Grade to Hight");
+			}
 	};
 	class GradeTooLowException : public std::exception {
 		public:
-			const char *what(void) const throw();
+			const char *what(void) const throw(){
+				return ("Grade to Low");
+			}
 	};
 	Bureaucrat(); // Default constructor
 	Bureaucrat(std::string name, int grade);
