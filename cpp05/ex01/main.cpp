@@ -21,7 +21,6 @@ int main(void){
 		std::cout << a << std::endl;
 	}
 	catch(const std::exception& e){
-		
 		std::cout << e.what() << std::endl;
 	}
 	
