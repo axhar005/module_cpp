@@ -1,13 +1,14 @@
 #include "inc/Bureaucrat.hpp"
+#include "inc/colors.hpp"
 
 // Default constructor
 Bureaucrat::Bureaucrat(std::string name, int grade) : _name(name){
+	if (CALL)
+		std::cout << MAGENTA << "Bureacrat default constructor as been called" << RESET << std::endl;
 	if (grade > 150){
-		std::cout << _name << " ";
 		throw GradeTooLowException();
 	}
 	else if (grade < 1){
-		std::cout << _name << " ";
 		throw GradeTooHighException();
 	}
 	_grade = grade;
@@ -15,19 +16,26 @@ Bureaucrat::Bureaucrat(std::string name, int grade) : _name(name){
 
 // Copy constructor
 Bureaucrat::Bureaucrat(const Bureaucrat &other) {
+	if (CALL)
+		std::cout << MAGENTA << "Bureacrat copy constructor as been called" << RESET << std::endl;
 	*this = other;
 }
 
 // Copy assignment overload
 Bureaucrat &Bureaucrat::operator=(const Bureaucrat &rhs) {
+	if (CALL)
+		std::cout << MAGENTA << "Bureacrat assignment overload as been called" << RESET << std::endl;
 	(void)rhs;
 	return *this;
 }
 
 // Default destructor
 Bureaucrat::~Bureaucrat() {
+	if (CALL)
+		std::cout << MAGENTA << "Bureacrat default deconstructor as been called" << RESET << std::endl;
 }
 
+// Function
 std::string Bureaucrat::getName() const{
 	return _name;
 }
@@ -38,22 +46,12 @@ int Bureaucrat::getGrade() const{
 
 void Bureaucrat::setGrade(int grade){
 	if (grade > 150){
-		std::cout << _name << " ";
 		throw GradeTooLowException();
 	}
 	else if (grade < 1){
-		std::cout << _name << " ";
 		throw GradeTooHighException();
 	}
 	_grade = grade;
-}
-
-const char *Bureaucrat::GradeTooHighException::what(void) const throw() {
-	return("Grade to Hight");
-}
-
-const char *Bureaucrat::GradeTooLowException::what(void) const throw() {
-	return("Grade to low");
 }
 
 void Bureaucrat::gradeIncrease(int i){

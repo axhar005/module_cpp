@@ -1,65 +1,56 @@
 #include <iostream>
 #include "inc/Bureaucrat.hpp"
+#include "inc/Form.hpp"
+#include "inc/colors.hpp"
 
 
 int main(void){
 	std::cout << "--------------------------------------" << std::endl;
-	Bureaucrat *bob;
 	try{
-		bob = new Bureaucrat("Jean-Pierre", 6);
-		bob->gradeIncrease(0);
-		std::cout << *bob << std::endl;
+		Bureaucrat a("karl", 2);
+		Form b("bail", 5, 3);
+		a.signForm(b);
+		b.beSigned(a);
+		std::cout << a << " : " << b << std::endl;
 	}
 	catch(const std::exception& e){
-		std::cout << e.what() << std::endl;
+		std::cout << RED << e.what() << RESET << std::endl;
 	}
 
 	std::cout << "--------------------------------------" << std::endl;
 	try{
-		Bureaucrat a("Robert", 10);
-		a.gradeIncrease(0);
-		std::cout << a << std::endl;
+		Bureaucrat a("karl", 2);
+		Form b("bail", 5, 3);
+		b.beSigned(a);
+		a.signForm(b);
+		std::cout << a << " : " << b << std::endl;
 	}
 	catch(const std::exception& e){
-		std::cout << e.what() << std::endl;
-	}
-	
-	std::cout << "--------------------------------------" << std::endl;
-	try{
-		Bureaucrat a("Ginette", -123);
-		std::cout << a << std::endl;
-	}
-	catch(const std::exception& e){
-		std::cout << e.what() << std::endl;
+		std::cout << RED << e.what() << RESET << std::endl;
 	}
 
 	std::cout << "--------------------------------------" << std::endl;
 	try{
-		Bureaucrat a("Ginette", 6);
-		a.gradeIncrease(182);
-		std::cout << a << std::endl;
+		Bureaucrat a("karl", 2);
+		Form b("bail", 500, 12);
+		a.signForm(b);
+		b.beSigned(a);
+		std::cout << a << " : " << b << std::endl;
 	}
 	catch(const std::exception& e){
-		std::cout << e.what() << std::endl;
+		std::cout << RED << e.what() << RESET << std::endl;
 	}
 
 	std::cout << "--------------------------------------" << std::endl;
 	try{
-		Bureaucrat a("Paule", 182);
-		std::cout << a << std::endl;
+		Bureaucrat a("karl", 2);
+		Form b("bail", 12, 500);
+		a.signForm(b);
+		b.beSigned(a);
+		std::cout << a << " : " << b << std::endl;
 	}
 	catch(const std::exception& e){
-		std::cout << e.what() << std::endl;
-	}
-
-	std::cout << "--------------------------------------" << std::endl;
-	try{
-		Bureaucrat a("Paule", 6);
-		a.gradeDecrease(182);
-		std::cout << a << std::endl;
-	}
-	catch(const std::exception& e){
-		std::cout << e.what() << std::endl;
+		std::cout << RED << e.what() << RESET << std::endl;
 	}
 
 	std::cout << "--------------------------------------" << std::endl;

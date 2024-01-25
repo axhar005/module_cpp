@@ -1,5 +1,5 @@
 #--- LIBRARY NAME ---#
-NAME = Bureaucrat
+NAME = Form
 
 #--- COMMAND VARIABLES ---#
 CC = c++
@@ -18,7 +18,7 @@ CLEANING := "$(GREEN)[+] Cleaning Completed$(RESET)"
 SUCCESS := "$(GREEN)[+] $(NAME) Successfully Compiled!$(RESET)"
 
 #--- OBJECT ---#
-SRC = main.cpp Bureaucrat.cpp
+SRC = main.cpp Bureaucrat.cpp Form.cpp
 INCDIR = inc
 OBJDIR = bin
 OBJ = $(addprefix $(OBJDIR)/, $(SRC:.cpp=.o))

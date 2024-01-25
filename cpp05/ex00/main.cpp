@@ -64,5 +64,8 @@ int main(void){
 	}
 
 	std::cout << "--------------------------------------" << std::endl;
+
+	if (bob)
+		delete bob;
 	return(0);
 }
