@@ -2,7 +2,7 @@
 #include "inc/colors.hpp"
 
 // Default constructor
-Form::Form() : _name("empty"), _gradeExec(0), _gradeSign(0), _sign(false){
+Form::Form() : _name(""), _gradeExec(150), _gradeSign(150), _sign(false){
 	if (CALL)
 		std::cout << MAGENTA << "Form default constructor as been called" << RESET << std::endl;
 }
@@ -67,6 +67,6 @@ void Form::gradeExeption(int grade){
 }
 
 std::ostream &operator<<(std::ostream &out, const Form &form) {
-	out << form.getName() << " Form grade execution " << form.getGradeExec() << " Form grade sign " << form.getGradeSign() << ".";
+	out << form.getName() << " is Form grade execution is " << form.getGradeExec() << " and Form grade sign is " << form.getGradeSign() << ".";
 	return out;
 }

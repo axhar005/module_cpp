@@ -19,6 +19,7 @@ public:
 				return ("Grade to Low");
 			}
 	};
+	Form(); // Default constructor
 	Form(std::string name, int gradeExec, int gradeSign);
 	Form(const Form &other); // Copy constructor
 	Form &operator=(const Form &rhs); // Copy assignment overload
@@ -31,7 +32,6 @@ public:
 	void beSigned(Bureaucrat &bureaucrat);
 
 private:
-	Form(); // Default constructor
 	const std::string _name;
 	const int _gradeExec;
 	const int _gradeSign;
