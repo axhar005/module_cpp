@@ -38,15 +38,18 @@ AForm* Intern::makeForm(std::string name, std::string target){
 	{
 		case 0:
 			form = new ShrubberyCreationForm(target);
+			break;
 		case 1:
 			form = new RobotomyRequestForm(target);
+			break;
 		case 2:
 			form = new PresidentialPardonForm(target);
+			break;
 		default:
 			std::cout << RED "Form does not exist" RESET << std::endl;
 			break;
 	}
 	if (form)
-		std::cout << YELLOW "Intern creates Form" RESET << std::endl;
+		std::cout << GREEN "Intern creates " << form->getName() << RESET << std::endl;
 	return form;
 }

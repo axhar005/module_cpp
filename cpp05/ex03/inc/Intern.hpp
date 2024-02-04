@@ -1,7 +1,7 @@
 #ifndef INTERN_HPP_
 #define INTERN_HPP_
 
-#include "AForm.hpp";
+#include "AForm.hpp"
 
 // Class declaration
 class Intern {
