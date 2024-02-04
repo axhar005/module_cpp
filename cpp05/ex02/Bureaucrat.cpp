@@ -1,5 +1,5 @@
 #include "inc/Bureaucrat.hpp"
-#include "inc/Form.hpp"
+#include "inc/AForm.hpp"
 #include "inc/colors.hpp"
 
 // Default constructor
@@ -63,7 +63,7 @@ void Bureaucrat::gradeDecrease(int i){
 	setGrade(_grade + i);
 }
 
-void Bureaucrat::signForm(Form &form) const{
+void Bureaucrat::signForm(AForm &form) const{
 	if (form.getSign())
 		std::cout << _name << " couldn't sign " << form.getName() << " because form alrady sign." << std::endl;
 	else

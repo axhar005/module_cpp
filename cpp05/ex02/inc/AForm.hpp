@@ -20,7 +20,7 @@ public:
 			}
 	};
 	AForm(); // Default constructor
-	AForm(std::string name, int gradeExec, int gradeSign);
+	AForm(std::string name, int gradeSign, int gradeExec);
 	AForm(const AForm &other); // Copy constructor
 	AForm &operator=(const AForm &rhs); // Copy assignment overload
 	~AForm(); // Default destructor
@@ -34,8 +34,8 @@ public:
 
 private:
 	const std::string _name;
-	const int _gradeExec;
 	const int _gradeSign;
+	const int _gradeExec;
 	bool _sign;
 
 };

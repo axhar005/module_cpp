@@ -18,7 +18,7 @@ CLEANING := "$(GREEN)[+] Cleaning Completed$(RESET)"
 SUCCESS := "$(GREEN)[+] $(NAME) Successfully Compiled!$(RESET)"
 
 #--- OBJECT ---#
-SRC = main.cpp Bureaucrat.cpp Form.cpp
+SRC = main.cpp Bureaucrat.cpp AForm.cpp ShrubberyCreationForm.cpp RobotomyRequestForm.cpp PresidentialPardonForm.cpp
 INCDIR = inc
 OBJDIR = bin
 OBJ = $(addprefix $(OBJDIR)/, $(SRC:.cpp=.o))

@@ -2,12 +2,12 @@
 #include "inc/colors.hpp"
 
 // Default constructor
-Form::Form() : _name(""), _gradeExec(150), _gradeSign(150), _sign(false){
+Form::Form() : _name(""), _gradeSign(150), _gradeExec(150) , _sign(false){
 	if (CALL)
 		std::cout << MAGENTA << "Form default constructor as been called" << RESET << std::endl;
 }
 
-Form::Form(std::string name, int gradeExec, int gradeSign) : _name(name), _gradeExec(gradeExec), _gradeSign(gradeSign), _sign(false){
+Form::Form(std::string name, int gradeSign, int gradeExec) : _name(name), _gradeSign(gradeSign), _gradeExec(gradeExec), _sign(false){
 	gradeExeption(_gradeExec);
 	gradeExeption(_gradeSign);
 }

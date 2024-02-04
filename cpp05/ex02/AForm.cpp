@@ -2,18 +2,18 @@
 #include "inc/colors.hpp"
 
 // Default constructor
-AForm::AForm() : _name(""), _gradeExec(150), _gradeSign(150), _sign(false){
+AForm::AForm() : _name(""), _gradeSign(150), _gradeExec(150), _sign(false){
 	if (CALL)
 		std::cout << MAGENTA << "AForm default constructor as been called" << RESET << std::endl;
 }
 
-AForm::AForm(std::string name, int gradeExec, int gradeSign) : _name(name), _gradeExec(gradeExec), _gradeSign(gradeSign), _sign(false){
-	gradeExeption(_gradeExec);
+AForm::AForm(std::string name, int gradeSign, int gradeExec) : _name(name), _gradeSign(gradeSign), _gradeExec(gradeExec), _sign(false){
 	gradeExeption(_gradeSign);
+	gradeExeption(_gradeExec);
 }
 
 // Copy constructor
-AForm::AForm(const AForm &other) : _name(other._name), _gradeExec(other._gradeExec), _gradeSign(other._gradeSign), _sign(other._sign){
+AForm::AForm(const AForm &other) : _name(other._name), _gradeSign(other._gradeSign), _gradeExec(other._gradeExec), _sign(other._sign){
 	if (CALL)
 		std::cout << MAGENTA << "AForm copy constructor as been called" << RESET << std::endl;
 }

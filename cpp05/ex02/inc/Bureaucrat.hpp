@@ -4,7 +4,7 @@
 #define CALL false
 
 #include <iostream>
-class Form;
+class AForm;
 
 // Class declaration
 class Bureaucrat {
@@ -30,7 +30,7 @@ public:
 	int getGrade() const;
 	void gradeIncrease(int i);
 	void gradeDecrease(int i);
-	void signForm(Form &form) const;
+	void signForm(AForm &form) const;
 
 private:
 	void setGrade(int grade);
