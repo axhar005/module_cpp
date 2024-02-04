@@ -1,5 +1,7 @@
 #include "inc/Intern.hpp"
 #include "inc/ShrubberyCreationForm.hpp"
+#include "inc/RobotomyRequestForm.hpp"
+#include "inc/PresidentialPardonForm.hpp"
 #include "inc/colors.hpp"
 
 // Default constructor
@@ -28,7 +30,7 @@ AForm* Intern::makeForm(std::string name, std::string target){
 	int i;
 	AForm *form = NULL;
 	std::string form_name [] = {"shrubbery request", "robotomy request", "presidential request"};
-	for (i = 0; i < 3; i++){
+	for (i = 0; i < 4; i++){
 		if (form_name[i] == name)
 			break;
 	}
@@ -37,9 +39,9 @@ AForm* Intern::makeForm(std::string name, std::string target){
 		case 0:
 			form = new ShrubberyCreationForm(target);
 		case 1:
-			form = new ShrubberyCreationForm(target);
+			form = new RobotomyRequestForm(target);
 		case 2:
-			form = new ShrubberyCreationForm(target);
+			form = new PresidentialPardonForm(target);
 		default:
 			std::cout << RED "Form does not exist" RESET << std::endl;
 			break;
