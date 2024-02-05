@@ -20,7 +20,7 @@ bool str_isdigit(const std::string &str){
 }
 
 bool str_ischar(const std::string &str){
-	if (str.length() == 1 && str[0] > 32 && str[0] < 127 && !isdigit(str[0]))
+	if (str.length() == 1 && isascii(str[0]) && !isdigit(str[0]))
 		return (true);
 	return (false);
 }
@@ -70,10 +70,3 @@ bool str_isdouble(const std::string &str){
 	}
 	return (true);
 }
-
-
-	// if (!str_isdigit(str))
-	// 	return (false);
-	// if (std::stoi(str) > 32 && std::stoi(str) < 127)
-	// 	return (true);
-	// return (false);

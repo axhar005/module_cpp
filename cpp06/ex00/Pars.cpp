@@ -1,7 +1,9 @@
 #include "inc/Pars.hpp"
 #include "inc/utils.hpp"
+#include "inc/colors.hpp"
 #include <string>
 #include <iomanip>
+#include <limits>
 
 // Default constructor
 Pars::Pars() : _str(""), _type(none){
@@ -61,58 +63,107 @@ void Pars::setType(){
 	isDouble();
 	switch (_type)
 	{
-		case none:
-			break;
 		case charType:
 			convertChar();
 			break;
 		case intType:
+			convertInt();
 			break;
-
 		case floatType:
+			convertFloat();
 			break;
 		case doubleType:
 			convertDouble();
 			break;
 		default:
+			std::cout << RED << "error: wrong argument\n";
 			break;
 	}
 }
 
 void Pars::convertChar(){
-	try{
-		_charValue = _str[0];
-		std::cout << "char : " << _charValue << "\n";
+	char temp = _str[0];
+	if (temp > 32 && temp < 127 && !isdigit(temp)){
+		_charValue = temp;
+		std::cout << "char : '" << _charValue << "'\n";
+	}else{
+		std::cout << "char : " << "Not displayable\n";
 	}
-	catch(const std::exception& e){
-		std::cout << "char : " << "impossible" << "\n";
-	}
-	try{
-		_intValue = static_cast<int>(_charValue);
-		std::cout << "int : " << _intValue << "\n";
-	}
-	catch(const std::exception& e){
-		std::cout << "int : " << "impossible" << "\n";
-	}
-	try{
-		_floatValue = static_cast<float>(_charValue);
-		std::cout << "float : " << std::fixed << std::setprecision(1) << _floatValue << "f\n";
-	}
-	catch(const std::exception& e){
-		std::cout << "float : " << "impossible" << "\n";
-	}
-	try{
-		_doubleValue = static_cast<float>(_charValue);
-		std::cout << "double : " << std::fixed << std::setprecision(2) << _doubleValue << "\n";
-	}
-	catch(const std::exception& e){
-		std::cout << "double : " << "impossible" << "\n";
-	}
+	_intValue = static_cast<int>(temp);
+	std::cout << "int : " << _intValue << "\n";
+	_floatValue = static_cast<float>(temp);
+	std::cout << "float : " << std::fixed << std::setprecision(1) << _floatValue << "f\n";
+	_doubleValue = static_cast<double>(temp);
+	std::cout << "double : " << std::fixed << std::setprecision(2) << _doubleValue << "\n";
 }
 
-void Pars::convertDouble(){
+void Pars::convertInt(){
+	int temp = std::stoi(_str);
+	if (temp > 32 && temp < 127 && !isdigit(temp)){
+		_charValue = temp;
+		std::cout << "char : '" << _charValue << "'\n";
+	}else if (isascii(temp)){
+		std::cout << "char : " << "Not displayable\n";
+	}else{
+		std::cout << "char : " << "impossible\n";
+	}
+	_intValue = temp;
+	std::cout << "int : " << _intValue << "\n";
+	_floatValue = static_cast<float>(temp);
+	std::cout << "float : " << std::fixed << std::setprecision(1) << _floatValue << "f\n";
+	_doubleValue = static_cast<double>(temp);
+	std::cout << "double : " << std::fixed << std::setprecision(2) << _doubleValue << "\n";
+}
 
-	
+void Pars::convertFloat(){
+	float temp = std::stof(_str);
+	if (temp > 32 && temp < 127 && !isdigit(temp)){
+		_charValue = temp;
+		std::cout << "char : '" << _charValue << "'\n";
+	}else if (isascii(temp)){
+		std::cout << "char : " << "Not displayable\n";
+	}else{
+		std::cout << "char : " << "impossible\n";
+	}
+
+	if (temp <= INT_MAX){
+		_intValue = static_cast<int>(temp);
+		std::cout << "int : " << _intValue << "\n";
+	}else{
+		std::cout << "int : " << "impossible\n";
+	}
+	_floatValue = temp;
+	std::cout << "float : " << std::fixed << std::setprecision(1) << _floatValue << "f\n";
+	_doubleValue = static_cast<double>(temp);
+	std::cout << "double : " << std::fixed << std::setprecision(2) << _doubleValue << "\n";
+}
+
+
+void Pars::convertDouble(){
+	double temp = std::stod(_str);
+	if (temp > 32 && temp < 127 && !isdigit(temp)){
+		_charValue = temp;
+		std::cout << "char : '" << _charValue << "'\n";
+	}else if (isascii(temp)){
+		std::cout << "char : " << "Not displayable\n";
+	}else{
+		std::cout << "char : " << "impossible\n";
+	}
+
+	if (temp <= INT_MAX){
+		_intValue = static_cast<int>(temp);
+		std::cout << "int : " << _intValue << "\n";
+	}else{
+		std::cout << "int : " << "impossible\n";
+	}
+	if (temp <= std::numeric_limits<float>::max()){
+		_floatValue = static_cast<float>(temp);
+		std::cout << "float : " << std::fixed << std::setprecision(1) << _floatValue << "f\n";
+	}else{
+		std::cout << "float : impossible\n";
+	}
+	_doubleValue = temp;
+	std::cout << "double : " << std::fixed << std::setprecision(2) << _doubleValue << "\n";
 }
 
 

@@ -9,6 +9,4 @@ int main(int ac, char **av){
 	}
 	Pars p(av[1]);
 	p.setType();
-
-	std::cout << isdigit(54);
 }
