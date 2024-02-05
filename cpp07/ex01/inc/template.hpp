@@ -16,7 +16,7 @@ void add(T &a){
 
 template<typename T>
 void data(T &a){
-	a = 45;
+	a = 5;
 }
 
 
