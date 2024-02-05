@@ -1,4 +1,5 @@
 #include <iostream>
+#include "inc/colors.hpp"
 
 struct Data{
 	std::string s1;
@@ -14,8 +15,8 @@ Data* deserialize(uintptr_t raw){
 }
 
 int main(void){
-	std::string s1 = "Bien le";
-	std::string s2 = " bonjours";
+	std::string s1 = GREEN "Bien le" RESET;
+	std::string s2 = YELLOW " bonjours" RESET;
 
 	Data *data = new Data;
 	data->s1 = s1;
