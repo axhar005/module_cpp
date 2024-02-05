@@ -8,7 +8,8 @@ enum{
 	charType,
 	intType,
 	floatType,
-	doubleType
+	doubleType,
+	specialType
 };
 
 // Class declaration
@@ -23,11 +24,13 @@ public:
 	bool isInt();
 	bool isFloat();
 	bool isDouble();
+	bool isSpecial();
 	void setType();
 	void convertChar();
 	void convertInt();
 	void convertFloat();
 	void convertDouble();
+	void convertSpecial();
 
 private:
 	std::string 	_str;

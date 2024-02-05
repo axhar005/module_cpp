@@ -9,4 +9,5 @@ int main(int ac, char **av){
 	}
 	Pars p(av[1]);
 	p.setType();
+	return (0);
 }

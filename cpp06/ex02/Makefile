@@ -1,5 +1,5 @@
 #--- LIBRARY NAME ---#
-NAME = convert
+NAME = type
 
 #--- COMMAND VARIABLES ---#
 CC = c++
@@ -18,7 +18,7 @@ CLEANING := "$(GREEN)[+] Cleaning Completed$(RESET)"
 SUCCESS := "$(GREEN)[+] $(NAME) Successfully Compiled!$(RESET)"
 
 #--- OBJECT ---#
-SRC = main.cpp Pars.cpp utils.cpp
+SRC = main.cpp
 INCDIR = inc
 OBJDIR = bin
 OBJ = $(addprefix $(OBJDIR)/, $(SRC:.cpp=.o))

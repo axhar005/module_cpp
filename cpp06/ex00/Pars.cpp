@@ -32,6 +32,8 @@ Pars::~Pars() {
 	return;
 }
 
+// Function
+
 bool Pars::isChar(){
 	if (str_ischar(_str))
 		return (_type = charType, true);
@@ -56,11 +58,20 @@ bool Pars::isDouble(){
 	return (false);
 }
 
+bool Pars::isSpecial(){
+	std::string special[] = {"nan", "nanf", "-inf", "-inff", "+inf", "+inff"};
+	for (int i = 0; i < 6; i++)
+		if (special[i] == _str)
+			return (_type = specialType, true);
+	return (false);
+}
+
 void Pars::setType(){
 	isChar();
 	isInt();
 	isFloat();
 	isDouble();
+	isSpecial();
 	switch (_type)
 	{
 		case charType:
@@ -74,6 +85,9 @@ void Pars::setType(){
 			break;
 		case doubleType:
 			convertDouble();
+			break;
+		case specialType:
+			convertSpecial();
 			break;
 		default:
 			std::cout << RED << "error: wrong argument\n";
@@ -166,4 +180,18 @@ void Pars::convertDouble(){
 	std::cout << "double : " << std::fixed << std::setprecision(2) << _doubleValue << "\n";
 }
 
+void Pars::convertSpecial(){
+	std::cout << "char : " << "impossible\n";
+	std::cout << "int : " << "impossible\n";
+	if (_str == "nan" || _str == "nanf"){
+		std::cout << "float : nanf\n";
+		std::cout << "double : nan\n";
+	}else if (_str == "-inf" || _str == "+inf"){
+		std::cout << "float : " << _str + "f" << "\n";
+		std::cout << "double : " << _str << "\n";
+	}else{
+		std::cout << "float : " << _str << "\n";
+		std::cout << "double : " << _str.substr(0, _str.length() -1) << "\n";
+	}
+}
 
