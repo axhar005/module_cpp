@@ -90,7 +90,7 @@ void Pars::setType(){
 			convertSpecial();
 			break;
 		default:
-			std::cout << RED << "error: wrong argument\n";
+			std::cout << RED "error: wrong argument\n" RESET;
 			break;
 	}
 }
@@ -101,7 +101,7 @@ void Pars::convertChar(){
 		_charValue = temp;
 		std::cout << "char : '" << _charValue << "'\n";
 	}else{
-		std::cout << "char : " << "Not displayable\n";
+		std::cout << "char : " << YELLOW "Not displayable\n" RESET;
 	}
 	_intValue = static_cast<int>(temp);
 	std::cout << "int : " << _intValue << "\n";
@@ -117,9 +117,9 @@ void Pars::convertInt(){
 		_charValue = temp;
 		std::cout << "char : '" << _charValue << "'\n";
 	}else if (isascii(temp)){
-		std::cout << "char : " << "Not displayable\n";
+		std::cout << "char : " << YELLOW "Not displayable\n" RESET;
 	}else{
-		std::cout << "char : " << "impossible\n";
+		std::cout << "char : " << RED "impossible\n" RESET;
 	}
 	_intValue = temp;
 	std::cout << "int : " << _intValue << "\n";
@@ -135,16 +135,16 @@ void Pars::convertFloat(){
 		_charValue = temp;
 		std::cout << "char : '" << _charValue << "'\n";
 	}else if (isascii(temp)){
-		std::cout << "char : " << "Not displayable\n";
+		std::cout << "char : " << YELLOW "Not displayable\n" RESET;
 	}else{
-		std::cout << "char : " << "impossible\n";
+		std::cout << "char : " << RED "impossible\n" RESET;
 	}
 
 	if (temp <= INT_MAX){
 		_intValue = static_cast<int>(temp);
 		std::cout << "int : " << _intValue << "\n";
 	}else{
-		std::cout << "int : " << "impossible\n";
+		std::cout << "int : " << RED "impossible\n" RESET;
 	}
 	_floatValue = temp;
 	std::cout << "float : " << std::fixed << std::setprecision(1) << _floatValue << "f\n";
@@ -159,30 +159,30 @@ void Pars::convertDouble(){
 		_charValue = temp;
 		std::cout << "char : '" << _charValue << "'\n";
 	}else if (isascii(temp)){
-		std::cout << "char : " << "Not displayable\n";
+		std::cout << "char : " << YELLOW "Not displayable\n" RESET;
 	}else{
-		std::cout << "char : " << "impossible\n";
+		std::cout << "char : " << RED "impossible\n" RESET;
 	}
 
 	if (temp <= INT_MAX){
 		_intValue = static_cast<int>(temp);
 		std::cout << "int : " << _intValue << "\n";
 	}else{
-		std::cout << "int : " << "impossible\n";
+		std::cout << "int : " << RED "impossible\n" RESET;
 	}
 	if (temp <= std::numeric_limits<float>::max()){
 		_floatValue = static_cast<float>(temp);
 		std::cout << "float : " << std::fixed << std::setprecision(1) << _floatValue << "f\n";
 	}else{
-		std::cout << "float : impossible\n";
+		std::cout << "float : " << RED "impossible\n" RESET;
 	}
 	_doubleValue = temp;
 	std::cout << "double : " << std::fixed << std::setprecision(2) << _doubleValue << "\n";
 }
 
 void Pars::convertSpecial(){
-	std::cout << "char : " << "impossible\n";
-	std::cout << "int : " << "impossible\n";
+	std::cout << "char : " << RED "impossible\n" RESET;
+	std::cout << "int : " << RED "impossible\n" RESET;
 	if (_str == "nan" || _str == "nanf"){
 		std::cout << "float : nanf\n";
 		std::cout << "double : nan\n";
