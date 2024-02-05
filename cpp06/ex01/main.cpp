@@ -24,7 +24,8 @@ int main(void){
 
 	std::cout << data->s1 << data->s2 << std::endl;
 
-	data = deserialize(serialize(data));
+	uintptr_t val = serialize(data);
+	data = deserialize(val);
 
 	std::cout << data->s1 << data->s2 << std::endl;
 

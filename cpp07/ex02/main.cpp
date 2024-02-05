@@ -94,6 +94,16 @@ void testDouble(){
 		std::cout << std::fixed << std::setprecision(2) << a[i] << " ";
 	std::cout << std::endl;
 	std::cout << "*********************" RESET << std::endl;
+
+	try
+	{
+		b[200000];
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << e.what() << '\n';
+	}
+	
 }
 
 int main(void){
