@@ -1,5 +1,5 @@
 #--- LIBRARY NAME ---#
-NAME = Bureaucrat
+NAME = bureaucrat
 
 #--- COMMAND VARIABLES ---#
 CC = c++

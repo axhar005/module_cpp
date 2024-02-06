@@ -33,8 +33,8 @@ public:
 
 private:
 	const std::string _name;
-	const int _gradeExec;
 	const int _gradeSign;
+	const int _gradeExec;
 	bool _sign;
 
 };

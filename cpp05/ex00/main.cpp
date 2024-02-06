@@ -17,7 +17,7 @@ int main(void){
 	std::cout << "--------------------------------------" << std::endl;
 	try{
 		Bureaucrat a("Robert", 10);
-		a.gradeIncrease(0);
+		a.gradeIncrease(1);
 		std::cout << a << std::endl;
 	}
 	catch(const std::exception& e){

@@ -139,7 +139,6 @@ void Pars::convertFloat(){
 	}else{
 		std::cout << "char : " << RED "impossible\n" RESET;
 	}
-
 	if (temp <= INT_MAX){
 		_intValue = static_cast<int>(temp);
 		std::cout << "int : " << _intValue << "\n";
@@ -152,7 +151,6 @@ void Pars::convertFloat(){
 	std::cout << "double : " << std::fixed << std::setprecision(2) << _doubleValue << "\n";
 }
 
-
 void Pars::convertDouble(){
 	double temp = std::stod(_str);
 	if (temp > 32 && temp < 127 && !isdigit(temp)){
@@ -163,7 +161,6 @@ void Pars::convertDouble(){
 	}else{
 		std::cout << "char : " << RED "impossible\n" RESET;
 	}
-
 	if (temp <= INT_MAX){
 		_intValue = static_cast<int>(temp);
 		std::cout << "int : " << _intValue << "\n";

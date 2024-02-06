@@ -1,7 +1,7 @@
 #ifndef BUREAUCRAT_HPP_
 #define BUREAUCRAT_HPP_
 
-#define CALL true
+#define CALL 0
 
 #include <iostream>
 class Form;

@@ -8,12 +8,12 @@ Form::Form() : _name(""), _gradeSign(150), _gradeExec(150) , _sign(false){
 }
 
 Form::Form(std::string name, int gradeSign, int gradeExec) : _name(name), _gradeSign(gradeSign), _gradeExec(gradeExec), _sign(false){
-	gradeExeption(_gradeExec);
 	gradeExeption(_gradeSign);
+	gradeExeption(_gradeExec);
 }
 
 // Copy constructor
-Form::Form(const Form &other) : _name(other._name), _gradeExec(other._gradeExec), _gradeSign(other._gradeSign), _sign(other._sign){
+Form::Form(const Form &other) : _name(other._name), _gradeSign(other._gradeSign), _gradeExec(other._gradeExec), _sign(other._sign){
 	if (CALL)
 		std::cout << MAGENTA << "Form copy constructor as been called" << RESET << std::endl;
 }

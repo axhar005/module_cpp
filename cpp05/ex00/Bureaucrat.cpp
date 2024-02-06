@@ -2,6 +2,9 @@
 #include "inc/colors.hpp"
 
 // Default constructor
+Bureaucrat::Bureaucrat() : _name(""), _grade(150){
+}
+
 Bureaucrat::Bureaucrat(std::string name, int grade) : _name(name){
 	if (CALL)
 		std::cout << MAGENTA << "Bureacrat default constructor as been called" << RESET << std::endl;
