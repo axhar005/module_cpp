@@ -1,5 +1,5 @@
 #--- LIBRARY NAME ---#
-NAME = array
+NAME = ex02
 
 #--- COMMAND VARIABLES ---#
 CC = c++
@@ -37,6 +37,9 @@ $(OBJDIR):
 ${NAME}:	$(OBJ)
 	@$(CC) $(CFLAGS) -o $(NAME) $(OBJ)
 	@echo $(SUCCESS)
+
+run: 
+	@./$(NAME)
 
 clean:
 	@$(RM) $(OBJ)

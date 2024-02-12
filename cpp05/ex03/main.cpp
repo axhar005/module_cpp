@@ -22,8 +22,8 @@ int main(void){
 	rrf3 = intern.makeForm("presidential request", "bob");
 	rrf4 = intern.makeForm("hsadhjasg request", "bob");
 	std::cout << "--------------------------------------" << std::endl;
+	rrf1->beSigned(bob);
 	bob.executeForm(*rrf1);
 	bob.executeForm(*rrf2);
 	bob.executeForm(*rrf3);
-	bob.executeForm(*rrf4);
 }
