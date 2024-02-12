@@ -11,13 +11,13 @@ public:
 	class GradeTooHighException : public std::exception {
 		public:
 			const char *what(void) const throw(){
-				return ("Grade to Hight");
+				return ("Grade too Hight");
 			}
 	};
 	class GradeTooLowException : public std::exception {
 		public:
 			const char *what(void) const throw(){
-				return ("Grade to Low");
+				return ("Grade too Low");
 			}
 	};
 	Bureaucrat(); // Default constructor
