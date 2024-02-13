@@ -18,7 +18,7 @@ CLEANING := "$(GREEN)[+] Cleaning Completed$(RESET)"
 SUCCESS := "$(GREEN)[+] $(NAME) Successfully Compiled!$(RESET)"
 
 #--- OBJECT ---#
-SRC = main.cpp
+SRC = main.cpp BitcoinExchange.cpp
 INCDIR = inc
 OBJDIR = bin
 OBJ = $(addprefix $(OBJDIR)/, $(SRC:.cpp=.o))
