@@ -37,6 +37,8 @@ void RPN::step(){
 			_stack.push(_a - _b);
 		}else if (_str[i] == '/'){
 			get_number();
+			if (_b == 0)
+				throw std::invalid_argument(RED "error: dived by 0 impossible" RESET);
 			_stack.push(_a / _b);
 		}else if (_str[i] == '*'){
 			get_number();
