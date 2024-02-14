@@ -23,38 +23,54 @@ BitcoinExchange &BitcoinExchange::operator=(const BitcoinExchange &rhs) {
 BitcoinExchange::~BitcoinExchange() {
 }
 
-void BitcoinExchange::pars() {
+void BitcoinExchange::print_db(){
+	std::map<std::string, double>::iterator it;
+	for (it = _db.begin(); it != _db.end(); it++){
+		std::cout << it->first << " : " <<  it->second << std::endl;
+	}
+}
+
+void BitcoinExchange::pars_db() {
+	std::map<std::string, double>::iterator it;
+	for (it = _db.begin(); it != _db.end(); it++){
+		if (!isdate(it->first))
+			throw std::invalid_argument(RED "error: db date format" RESET);
+	}
 }
 
 void BitcoinExchange::read_db() {
 
 	_file.open(_path);
 
-	if (!_file.is_open()){
-		std::cout << "error: specified path not found" << std::endl;
-		return;
-	}
+	if (!_file.is_open())
+		throw std::invalid_argument(RED "error: db specified path not found" RESET);
 	try{
 		getline(_file, _line);
-		if (_line != "date,exchange_rate"){
-			std::cout << "error: file format is improper" << std::endl;
-			return;
-		}
+		if (_line != "date,exchange_rate")
+			throw std::invalid_argument(RED "error: db file format is improper" RESET);
 		while (getline(_file, _line)){
-			if (!isdigit(_line[0]) || !isdigit(_line[_line.length() - 1])){
-				std::cout << "error: encountered bad date format or value" << std::endl;
-				return;
-			}
-			if (getline(_iline, _date, ',') && getline(_iline, _rateStr, ',')){
+			std::istringstream iline(_line);
+			if (!isdigit(_line[0]) || !isdigit(_line[_line.length() - 1]))
+				throw std::invalid_argument(RED "error: db encountered bad date format or value" RESET);
+			if (getline(iline, _date, ',') && getline(iline, _rateStr, ',')){
 				std::istringstream(_rateStr) >> _rate;
 				_db[_date] = _rate;
 			}
 		}
 	}catch(const std::exception &e){
-		std::cout << e.what() << std::endl;
-		return;
+		throw std::invalid_argument(e.what());
 	}
 	_file.close();
-
 }
 
+
+
+bool isdate(std::string str){
+	if (str[4] != '-' || str[7] != '-' || str.length() != 10)
+		return (false);
+	for (size_t i = 0; i < str.length(); i++){
+		if (!isdigit(str[i]) && str[i] != '-')
+			return (false);
+	}
+	return true;
+}

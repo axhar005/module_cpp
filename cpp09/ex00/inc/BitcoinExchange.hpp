@@ -6,6 +6,7 @@
 #include <sstream>
 #include <map>
 #include <string>
+#include "colors.hpp"
 
 // Class declaration
 class BitcoinExchange {
@@ -15,16 +16,18 @@ public:
 	BitcoinExchange &operator=(const BitcoinExchange &rhs); // Copy assignment overload
 	~BitcoinExchange(); // Default destructor
 	void read_db();
-	void pars();
+	void pars_db();
+	void print_db();
 
 private:
 	BitcoinExchange(); // Default constructor
 	std::map<std::string, double> _db;
 	std::string _line;
 	std::ifstream _file;
-	std::istringstream _iline;
 	std::string _date, _rateStr, _path;
 	double _rate;
 };
+
+bool isdate(std::string str);
 
 #endif // BITCOINEXCHANGE_HPP_

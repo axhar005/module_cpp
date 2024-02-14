@@ -10,9 +10,18 @@ int main(int ac, char **av){
 		std::cout << "Use: " << av[0] << " <path>" << std::endl;
 		return (0);
 	}
-	BitcoinExchange a("data.csv");
-	a.read();
-
+	try
+	{
+		BitcoinExchange a("data.csv");
+		a.read_db();
+		a.pars_db();
+		a.print_db();
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << e.what() << std::endl;
+	}
+	
 
 	return 0;
 }
