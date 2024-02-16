@@ -57,6 +57,7 @@ void BitcoinExchange::read_db() {
 					_db[_date] = _rate;
 				else
 					throw std::invalid_argument(RED "error: db encountered bad date format or value" RESET);
+				// std::lower_bound();
 			}
 		}
 	}catch(const std::exception &e){
