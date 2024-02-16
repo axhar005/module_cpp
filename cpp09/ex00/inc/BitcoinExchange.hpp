@@ -18,16 +18,17 @@ public:
 	void read_db();
 	void pars_db();
 	void print_db();
+	void read();
 
 private:
 	BitcoinExchange(); // Default constructor
 	std::map<std::string, double> _db;
-	std::string _line;
-	std::ifstream _file;
-	std::string _date, _rateStr, _path;
+	std::ifstream _file[2];
+	std::string _date, _rateStr, _line, _db_path, _path;
 	double _rate;
 };
 
 bool isdate(std::string str);
+std::string supchar(const std::string &str, char c);
 
 #endif // BITCOINEXCHANGE_HPP_

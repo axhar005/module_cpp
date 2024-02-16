@@ -4,7 +4,7 @@
 BitcoinExchange::BitcoinExchange() {
 }
 
-BitcoinExchange::BitcoinExchange(std::string path) : _path(path){
+BitcoinExchange::BitcoinExchange(std::string path) :  _db_path("data.csv"), _path(path){
 }
 
 // Copy constructor
@@ -34,36 +34,64 @@ void BitcoinExchange::pars_db() {
 	std::map<std::string, double>::iterator it;
 	for (it = _db.begin(); it != _db.end(); it++){
 		if (!isdate(it->first))
-			throw std::invalid_argument(RED "error: db date format" RESET);
+			throw std::invalid_argument(RED "error: db encountered bad date format or value" RESET);
 	}
 }
 
 void BitcoinExchange::read_db() {
 
-	_file.open(_path);
-
-	if (!_file.is_open())
+	_file[0].open(_db_path);
+	if (!_file[0].is_open())
 		throw std::invalid_argument(RED "error: db specified path not found" RESET);
+	
 	try{
-		getline(_file, _line);
+		getline(_file[0], _line);
 		if (_line != "date,exchange_rate")
 			throw std::invalid_argument(RED "error: db file format is improper" RESET);
-		while (getline(_file, _line)){
+		while (getline(_file[0], _line)){
+			_line = supchar(_line, ' ');
 			std::istringstream iline(_line);
-			if (!isdigit(_line[0]) || !isdigit(_line[_line.length() - 1]))
-				throw std::invalid_argument(RED "error: db encountered bad date format or value" RESET);
 			if (getline(iline, _date, ',') && getline(iline, _rateStr, ',')){
 				std::istringstream(_rateStr) >> _rate;
-				_db[_date] = _rate;
+				if (_date.length() >= 10)
+					_db[_date] = _rate;
+				else
+					throw std::invalid_argument(RED "error: db encountered bad date format or value" RESET);
 			}
 		}
 	}catch(const std::exception &e){
 		throw std::invalid_argument(e.what());
 	}
-	_file.close();
+	_file[0].close();
 }
 
+void BitcoinExchange::read(){
+	_file[1].open(_path);
+	if (!_file[2].is_open())
+		throw std::invalid_argument(RED "error: specified path not found" RESET);
+	
+	try
+	{
+		getline(_file[1], _line);
+		if (_line != "date | value")
+			throw std::invalid_argument(RED "error: db file format is improper" RESET);
 
+		while (getline(_file[0], _line)){
+			std::istringstream iline(_line);
+			if (!isdigit(_line[0]) || !isdigit(_line[_line.length() - 1]))
+				throw std::invalid_argument(RED "error: db encountered bad date format or value" RESET);
+			if (getline(iline, _date, '|') && getline(iline, _rateStr, '|')){
+				std::istringstream(_rateStr) >> _rate;
+
+			}
+		}
+	}
+	catch(const std::exception& e)
+	{
+		std::cout << e.what() << std::endl;
+	}
+	
+}
 
 bool isdate(std::string str){
 	if (str[4] != '-' || str[7] != '-' || str.length() != 10)
@@ -73,4 +101,12 @@ bool isdate(std::string str){
 			return (false);
 	}
 	return true;
+}
+
+std::string supchar(const std::string &str, char c){
+	std::string tmp;
+	for (size_t i = 0; i < str.length(); i++)
+		if (str[i] != c)
+			tmp += str[i];
+	return (tmp);
 }

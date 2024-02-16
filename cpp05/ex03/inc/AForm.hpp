@@ -23,7 +23,7 @@ public:
 	AForm(std::string name, int gradeSign, int gradeExec);
 	AForm(const AForm &other); // Copy constructor
 	AForm &operator=(const AForm &rhs); // Copy assignment overload
-	~AForm(); // Default destructor
+	virtual ~AForm(); // Default destructor
 	void gradeExeption(const int grade);
 	std::string getName() const;
 	int getGradeExec() const;
