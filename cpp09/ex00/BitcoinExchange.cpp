@@ -75,15 +75,30 @@ void BitcoinExchange::read(){
 	{
 		getline(_file[1], _line);
 		if (_line != "date | value")
-			throw std::invalid_argument(RED "error: db file format is improper" RESET);
+			throw std::invalid_argument(RED "error: db file format is improperssss" RESET);
 
-		while (getline(_file[0], _line)){
+		while (getline(_file[1], _line)){
+			_line = supchar(_line, ' ');
 			std::istringstream iline(_line);
 			if (!isdigit(_line[0]) || !isdigit(_line[_line.length() - 1]))
 				throw std::invalid_argument(RED "error: db encountered bad date format or value" RESET);
 			if (getline(iline, _date, '|') && getline(iline, _rateStr, '|')){
 				std::istringstream(_rateStr) >> _rate;
-
+				if (isdate(_date)){					
+					std::map<std::string, double>::iterator it;
+					it = _db.lower_bound(_date);
+					it--;
+					if (_rate < 0)
+						std::cout <<RED "error: not a positive number" RESET << std::endl;
+					else if (_rate == 0)
+						std::cout <<RED "error: ad input => 2001-42-42" RESET << std::endl;
+					else if (_rate > std::numeric_limits<double>::max())
+						std::cout <<RED "error: too large a numbe" RESET << std::endl;
+					else
+						std::cout << _date << " => " << it->first << " => " << _rate << " = " << _rate * it->second << std::endl;
+				}else{
+					std::cout << RED "error: ad input => 2001-42-42" RESET << std::endl;
+				}
 			}
 		}
 	}

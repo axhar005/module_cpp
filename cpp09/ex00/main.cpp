@@ -12,10 +12,11 @@ int main(int ac, char **av){
 	}
 	try
 	{
-		BitcoinExchange a("data.csv");
+		BitcoinExchange a(av[1]);
 		a.read_db();
 		a.pars_db();
 		a.print_db();
+		a.read();
 	}
 	catch(const std::exception& e)
 	{

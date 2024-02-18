@@ -5,6 +5,8 @@
 #include <fstream>
 #include <sstream>
 #include <map>
+#include <limits>
+#include <algorithm>
 #include <string>
 #include "colors.hpp"
 
