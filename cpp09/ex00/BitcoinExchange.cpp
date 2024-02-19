@@ -26,7 +26,7 @@ BitcoinExchange::~BitcoinExchange() {
 void BitcoinExchange::print_db(){
 	std::map<std::string, double>::iterator it;
 	for (it = _db.begin(); it != _db.end(); it++){
-		std::cout << it->first << " : " <<  it->second << std::endl;
+		std::cout << std::fixed << std::setprecision(2) << it->first << " : " <<  it->second << std::endl;
 	}
 }
 
@@ -57,7 +57,6 @@ void BitcoinExchange::read_db() {
 					_db[_date] = _rate;
 				else
 					throw std::invalid_argument(RED "error: db encountered bad date format or value" RESET);
-				// std::lower_bound();
 			}
 		}
 	}catch(const std::exception &e){
@@ -66,39 +65,38 @@ void BitcoinExchange::read_db() {
 	_file[0].close();
 }
 
-void BitcoinExchange::read(){
+void BitcoinExchange::calcul(){
 	_file[1].open(_path);
-	if (!_file[2].is_open())
+	if (!_file[1].is_open())
 		throw std::invalid_argument(RED "error: specified path not found" RESET);
-	
-	try
-	{
+	try{
 		getline(_file[1], _line);
 		if (_line != "date | value")
-			throw std::invalid_argument(RED "error: db file format is improperssss" RESET);
+			throw std::invalid_argument(RED "error: file format is impropers" RESET);
 
 		while (getline(_file[1], _line)){
+			
 			_line = supchar(_line, ' ');
 			std::istringstream iline(_line);
-			if (!isdigit(_line[0]) || !isdigit(_line[_line.length() - 1]))
-				throw std::invalid_argument(RED "error: db encountered bad date format or value" RESET);
 			if (getline(iline, _date, '|') && getline(iline, _rateStr, '|')){
 				std::istringstream(_rateStr) >> _rate;
-				if (isdate(_date)){					
+				if (isdate(_date)){
 					std::map<std::string, double>::iterator it;
 					it = _db.lower_bound(_date);
-					it--;
-					if (_rate < 0)
+					if (it != _db.begin() && _date != it->first)
+						it--;
+					if (_rateStr != "0" && _rate == 0)
+						std::cout << RED "error: invalid value format => " << _rateStr << RESET << std::endl;
+					else if (_rate < 0)
 						std::cout <<RED "error: not a positive number" RESET << std::endl;
-					else if (_rate == 0)
-						std::cout <<RED "error: ad input => 2001-42-42" RESET << std::endl;
-					else if (_rate > std::numeric_limits<double>::max())
-						std::cout <<RED "error: too large a numbe" RESET << std::endl;
+					else if (_rate > std::numeric_limits<int>::max())
+						std::cout << RED "error: value too large => " << _rateStr << RESET << std::endl;
 					else
-						std::cout << _date << " => " << it->first << " => " << _rate << " = " << _rate * it->second << std::endl;
-				}else{
-					std::cout << RED "error: ad input => 2001-42-42" RESET << std::endl;
-				}
+						std::cout << std::fixed << std::setprecision(2) << _date << " => " << it->first << " => " << _rate << " = " << _rate * it->second << std::endl;
+				}else
+					std::cout << RED "error: invalid date format => " << _date << RESET << std::endl;;
+			}else{
+				std::cout << RED "error: bad input => " << _line << RESET << std::endl;
 			}
 		}
 	}
@@ -116,6 +114,10 @@ bool isdate(std::string str){
 		if (!isdigit(str[i]) && str[i] != '-')
 			return (false);
 	}
+	if (std::stoi(str.substr(5, 2)) > 12)
+		return (false);
+	if (std::stoi(str.substr(8, 2)) > 31)
+		return (false);
 	return true;
 }
 
@@ -125,4 +127,21 @@ std::string supchar(const std::string &str, char c){
 		if (str[i] != c)
 			tmp += str[i];
 	return (tmp);
+}
+
+bool str_isdigit(const std::string &str){
+	for (size_t i = 0; i < str.length(); i++) {
+		if (!isdigit(str[i])) {
+			return (false);
+		}
+	}
+	return (true);
+}
+
+int char_count(const std::string &str, char c){
+	int count = 0;
+	for (size_t i = 0; i < str.length(); i++)
+		if (str[i] == c)
+			count++;
+	return (count);
 }

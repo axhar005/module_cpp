@@ -20,7 +20,7 @@ public:
 	void read_db();
 	void pars_db();
 	void print_db();
-	void read();
+	void calcul();
 
 private:
 	BitcoinExchange(); // Default constructor
@@ -32,5 +32,7 @@ private:
 
 bool isdate(std::string str);
 std::string supchar(const std::string &str, char c);
+bool str_isdigit(const std::string &str);
+int char_count(const std::string &str, char c);
 
 #endif // BITCOINEXCHANGE_HPP_
