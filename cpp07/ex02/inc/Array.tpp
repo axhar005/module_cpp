@@ -18,7 +18,8 @@ Array<T>::Array(const Array &other) {
 template <typename T>
 Array<T> &Array<T>::operator=(const Array &rhs) {
 	if (this != &rhs){
-		delete [] _array;
+		if (_array)
+			delete [] _array;
 		_size = rhs._size;
 		_array = new T[_size];
 		for (unsigned int i = 0; i < _size; i++)

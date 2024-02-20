@@ -1,4 +1,5 @@
 #include "inc/Span.hpp"
+#include <stdexcept>
 
 // Default constructor
 Span::Span() {}
@@ -18,6 +19,14 @@ Span &Span::operator=(const Span &rhs) {
 
 // Default destructor
 Span::~Span() {}
+
+void Span::rangeIterator(int range, int startNumber){
+	if (_span.size() + range > _size)
+		throw std::out_of_range(RED"error: out of range" RESET);
+	int tmp = _span.size();
+	_span.resize(_span.size() + range);
+	iota( _span.begin() + tmp, _span.end(), startNumber);
+}
 
 // Function
 void Span::addNumber(int nbr) {
@@ -40,7 +49,7 @@ int Span::shortestSpan() const{
 		}
 		return min_distance;
 	}else{
-		throw std::runtime_error("Cannot compute distance");
+		throw std::runtime_error( RED "Cannot compute distance" RESET);
 	}
 }
 

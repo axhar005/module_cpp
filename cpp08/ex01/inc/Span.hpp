@@ -2,6 +2,9 @@
 #define SPAN_HPP_
 
 #include <vector>
+#include <numeric>
+#include <iostream>
+#include "colors.hpp"
 
 // Class declaration
 class Span {
@@ -14,6 +17,7 @@ public:
 	void addNumber(int nbr);
 	int shortestSpan() const;
 	int longestSpan() const;
+	void rangeIterator(int range, int startNumber);
 
 
 private:
