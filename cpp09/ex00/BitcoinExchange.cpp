@@ -107,6 +107,23 @@ void BitcoinExchange::calcul(){
 	
 }
 
+bool is_leap_years(int year) {
+	return (year % 4 == 0 && year % 100 != 0) || (year % 400 == 0);
+}
+
+int month_day(int month, int year){
+	switch (month) {
+		case 1: case 3: case 5: case 7: case 8: case 10:  case 12:
+			return 31;
+		case 4: case 6: case 9: case 11:
+			return 30;
+		case 2:
+			return (is_leap_years(year) ? 29 : 28);
+		default:
+			return 0;
+	}
+}
+
 bool isdate(std::string str){
 	if (str[4] != '-' || str[7] != '-' || str.length() != 10)
 		return (false);
@@ -114,10 +131,17 @@ bool isdate(std::string str){
 		if (!isdigit(str[i]) && str[i] != '-')
 			return (false);
 	}
-	if (std::stoi(str.substr(5, 2)) > 12)
-		return (false);
-	if (std::stoi(str.substr(8, 2)) > 31)
-		return (false);
+	int day, month, year;
+	std::istringstream dateStream(str);
+	char delim;
+	if ((dateStream >> year >> delim >> month >> delim >> day)) {
+		int monthDay = month_day(month, year);
+		if (day > 0 && day <= monthDay)
+			return true;
+		else
+			return false;
+	} else
+		return false;
 	return true;
 }
 
