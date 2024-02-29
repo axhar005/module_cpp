@@ -2,6 +2,7 @@
 #define PMERGEME_HPP_
 
 
+#include <ctime>
 #include <vector>
 #include <list>
 
@@ -15,6 +16,7 @@ public:
 	void Parse(int ac, char **av);
 	void PrintVector();
 	void PrintList();
+	void Time(std::clock_t start, std::clock_t end);
 
 private:
 	std::vector<unsigned int> _vector;

@@ -11,7 +11,7 @@ Character::Character() : _floorIndex(0){
 	for (int i = 0; i < MAX_EQUIPED; i++)
 		_book[i] = NULL;
 	for (int i = 0; i < MAX_DROPPED; i++)
-		_book[i] = NULL;
+		_floor[i] = NULL;
 	return;
 }
 
@@ -21,7 +21,7 @@ Character::Character(std::string name) : _floorIndex(0), _name(name){
 	for (int i = 0; i < MAX_EQUIPED; i++)
 		_book[i] = NULL;
 	for (int i = 0; i < MAX_DROPPED; i++)
-		_book[i] = NULL;
+		_floor[i] = NULL;
 	return;
 }
 
