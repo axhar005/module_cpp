@@ -89,7 +89,7 @@ void BitcoinExchange::calcul(){
 						std::cout << RED "error: invalid value format => " << _rateStr << RESET << std::endl;
 					else if (_rate < 0)
 						std::cout <<RED "error: not a positive number" RESET << std::endl;
-					else if (_rate > std::numeric_limits<int>::max())
+					else if (_rate > 1000)
 						std::cout << RED "error: value too large => " << _rateStr << RESET << std::endl;
 					else
 						std::cout << std::fixed << std::setprecision(2) << _date << " => " << it->first << " => " << _rate << " = " << _rate * it->second << std::endl;

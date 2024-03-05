@@ -3,7 +3,7 @@ NAME = PmergeMe
 
 #--- COMMAND VARIABLES ---#
 CC = c++
-CFLAGS = -std=c++98 -Wall -Wextra -Werror #-fsanitize=address
+CFLAGS = -std=c++98 -Wall -Wextra -Werror -O2 #-fsanitize=address
 RM = rm -f
 MK = mkdir -p
 
