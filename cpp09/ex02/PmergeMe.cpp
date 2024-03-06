@@ -4,6 +4,7 @@
 #include <exception>
 #include <iostream>
 #include <iterator>
+#include <ostream>
 #include <ratio>
 #include <stdexcept>
 #include <string>
@@ -70,39 +71,40 @@ void PmergeMe::PrintDeque(){
 	std::cout << std::endl;
 }
 
+void PmergeMe::PrintTime(){
+	std::cout << CYAN "Time to process a range of " GREEN << _len << CYAN " elements with std::vector : " << GREEN << _vector_duration << RESET CYAN " us" RESET << std::endl;
+	std::cout << MAGENTA "Time to process a range of " GREEN << _len << MAGENTA " elements with std::deque  : " << GREEN << _deque_duration << RESET MAGENTA " us" RESET << std::endl;
+}
+
 void PmergeMe::SortVector(){
 
-	std::cout << CYAN "Vector" RED << std::endl;
+	std::cout << CYAN "Vector\n{" RED << std::endl;
 	std::cout << "Before ";
 	PrintVector();
+	std::cout << YELLOW << std::endl;
 	getTimePassed();
 	int K = _vector.size() / 2;
 	sort(_vector, 0, _vector.size() - 1, K);
-	double duration = getTimePassed();
-	std::cout << std::endl;
-	std::cout << YELLOW "After ";
+	_vector_duration = getTimePassed();
+	std::cout << GREEN "After ";
 	PrintVector();
-	std::cout << RESET;
-	std::cout << CYAN "Time to process a range of " GREEN << _len << CYAN " elements with std::vector : " << GREEN << duration << RESET CYAN " us" RESET << std::endl;
+	std::cout << CYAN "}" RESET << std::endl;
 	std::cout << std::endl;
 }
 
-
 void PmergeMe::SortDeque(){
 
-	std::cout << MAGENTA "Deque" RED << std::endl;
+	std::cout << MAGENTA "Deque\n{" RED << std::endl;
 	std::cout << "Before ";
 	PrintDeque();
+	std::cout << YELLOW << std::endl;
 	getTimePassed();
 	int K = _deque.size() / 2;
 	sort(_deque, 0, _deque.size() - 1, K);
-	double duration = getTimePassed();
-	std::cout << std::endl;
-	std::cout << YELLOW "After ";
+	_deque_duration = getTimePassed();
+	std::cout << GREEN "After ";
 	PrintDeque();
-	std::cout << RESET;
-
-	std::cout << MAGENTA "Time to process a range of " GREEN << _len << MAGENTA " elements with std::deque : " << GREEN << duration << RESET MAGENTA " us" RESET << std::endl;
+	std::cout << MAGENTA "}" RESET << std::endl;
 	std::cout << std::endl;
 }
 

@@ -1,6 +1,7 @@
 #include <exception>
 #include <iostream>
 #include "inc/PmergeMe.hpp"
+#include "inc/colors.hpp"
 
 int main(int ac, char **av)
 {
@@ -11,8 +12,9 @@ int main(int ac, char **av)
 		arr.Parse(ac, av);
 		arr.SortVector();
 		arr.SortDeque();
+		arr.PrintTime();
 	} catch (const std::exception &e) {
-		std::cerr << e.what() << std::endl;
+		std::cerr << RED << e.what() << RESET << std::endl;
 	}
 
 	return 0;

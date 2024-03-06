@@ -22,11 +22,14 @@ public:
 	void SortVector();
 	void SortDeque();
 	void StartFordJohnson();
+	void PrintTime();
 
 private:
 	std::vector<int> _vector;
 	std::deque<int> _deque;
 	size_t _len;
+	double _vector_duration;
+	double _deque_duration;
 };
 
 template<typename T>
@@ -43,8 +46,7 @@ template<typename T>
 	for (int i = left; i <= midle; i++) {
 		std::cout << arr[i] << " ";
 	}
-	std::cout << std::endl;
-	std::cout << "insert" << std::endl;
+	std::cout << std::endl << std::endl;
 }
 
 template<typename T>
@@ -73,7 +75,6 @@ void merge(T& arr, int left, int midle, int right) {
 			RIDX++;
 		}
 	}
-	std::cout << "merge" << std::endl;
 }
 
 template<typename T>
