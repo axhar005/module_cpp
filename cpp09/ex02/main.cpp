@@ -1,7 +1,5 @@
 #include <exception>
 #include <iostream>
-#include <ctime>
-#include <iomanip>
 #include "inc/PmergeMe.hpp"
 
 int main(int ac, char **av)
@@ -19,12 +17,3 @@ int main(int ac, char **av)
 
 	return 0;
 }
-
-
-
-// int main() {
-
-// 	sort(arr, 0, arr.size() - 1);
-
-// 	return 0;
-// }
